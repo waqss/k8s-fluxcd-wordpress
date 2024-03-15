@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: wordpress
-      tag: 5.9.3-php8.1-fpm-alpine
+      tag: 6.2.2
     volumePermissions:
       enabled: true
     mariadb:
