@@ -15,6 +15,9 @@ spec:
         namespace: flux-system
       interval: 1m
   values:
+    image:
+      repository: wordpress
+      tag: 5.9.3-php8.1-fpm-alpine
     mariadb:
       auth:
         rootPassword: "adminPass123"
