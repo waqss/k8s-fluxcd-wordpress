@@ -16,6 +16,7 @@ spec:
       interval: 1m
   values:
     image:
+      repository: bitnami/wordpress
       tag: 5.9.3-debian-11-r23
     mariadb:
       auth:
