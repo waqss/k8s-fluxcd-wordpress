@@ -16,10 +16,7 @@ spec:
       interval: 1m
   values:
     image:
-      repository: wordpress
-      tag: 6.2.2
-    volumePermissions:
-      enabled: true
+      tag: 5.9.3-debian-11-r23
     mariadb:
       auth:
         rootPassword: "adminPass123"
