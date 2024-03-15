@@ -18,6 +18,8 @@ spec:
     image:
       repository: wordpress
       tag: 5.9.3-php8.1-fpm-alpine
+    volumePermissions:
+      enabled: true
     mariadb:
       auth:
         rootPassword: "adminPass123"
