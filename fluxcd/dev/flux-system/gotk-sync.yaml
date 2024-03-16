@@ -11,7 +11,7 @@ spec:
     branch: feat/implementation
   secretRef:
     name: flux-system
-  url: ssh://git@github.com/waqss/k8s-fluxcd-wordpress
+  url: https://github.com/waqss/k8s-fluxcd-wordpress.git
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
