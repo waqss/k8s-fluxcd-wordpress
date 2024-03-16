@@ -7,5 +7,5 @@ spec:
   imageRepositoryRef:
     name: wordpress-repo
   policy:
-    semVer:
+    semver:
       range: "6.x.x"
