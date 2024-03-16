@@ -1,7 +1,7 @@
-apiVersion: image.toolkit.fluxcd.io/v1beta1
+apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
-  name: wordpress
+  name: wordpress-auto
   namespace: flux-system
 spec:
   interval: 1h
@@ -11,7 +11,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: main
+        branch: feat/implementation
     commit:
       author:
         name: fluxcdbot

@@ -1,7 +1,7 @@
 apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageRepository
 metadata:
-  name: wordpress
+  name: wordpress-repo
   namespace: flux-system
 spec:
   image: docker.io/bitnami/wordpress
