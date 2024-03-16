@@ -17,7 +17,7 @@ spec:
   values:
     image:
       repository: bitnami/wordpress
-      tag: docker.io/bitnami/wordpress:6.4.3-debian-12-r17 # {"$imagepolicy": "flux-system:wordpress-policy"}
+      tag: docker.io/bitnami/wordpress:6.4.3-debian-12-r17 # {"$imagepolicy": "flux-system:wordpress-policy:tag"}
     mariadb:
       auth:
         rootPassword: "adminPass123"
