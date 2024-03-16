@@ -7,7 +7,7 @@ spec:
   imageRepositoryRef:
     name: wordpress-repo
   filterTags:
-    pattern: "^latest.*"
+    pattern: "6.4.3-debian-12-r17"
   # filterTags:
   #   pattern: ".*-rc.*"
   # policy:
