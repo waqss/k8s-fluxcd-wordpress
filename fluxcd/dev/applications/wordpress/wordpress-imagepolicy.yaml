@@ -8,4 +8,4 @@ spec:
     name: wordpress-repo
   policy:
     semver:
-      range: "6.x.x"
+      range: "^latest.*"
