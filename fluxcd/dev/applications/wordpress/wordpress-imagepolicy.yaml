@@ -6,6 +6,10 @@ metadata:
 spec:
   imageRepositoryRef:
     name: wordpress-repo
-  policy:
-    semver:
-      range: "^latest.*"
+  filterTags:
+    pattern: "^latest.*"
+  # filterTags:
+  #   pattern: ".*-rc.*"
+  # policy:
+  #   semver:
+  #     range: "^1.x-0"
