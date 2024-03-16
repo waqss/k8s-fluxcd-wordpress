@@ -1,18 +1,13 @@
-# apiVersion: image.toolkit.fluxcd.io/v1beta2
-# kind: ImagePolicy
-# metadata:
-#   name: wordpress-policy
-#   namespace: flux-system
-# spec:
-#   imageRepositoryRef:
-#     name: wordpress-repo
-#   filterTags:
-#     pattern: "6.4.3-debian-12-r17"
-#   # filterTags:
-#   #   pattern: ".*-rc.*"
-#   # policy:
-#   #   semver:
-#   #     range: "^1.x-0"
-#   policy:
-#     alphabetical:
-#       order: asc
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: wordpress-policy
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: wordpress-repo
+  # filterTags:
+  #   pattern: ""
+  policy:
+    semver:
+      range: ">=6.0.0"
