@@ -13,3 +13,6 @@ spec:
   # policy:
   #   semver:
   #     range: "^1.x-0"
+  policy:
+    alphabetical:
+      order: asc
