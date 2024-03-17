@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: "../../apps/dev"
+  path: "../../apps/dev/wordpress"
   prune: true
   sourceRef:
     kind: GitRepository
