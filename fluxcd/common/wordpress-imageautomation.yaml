@@ -18,5 +18,5 @@ spec:
         email: fluxcdbot@example.com
       messageTemplate: "update WordPress image to {{range .Updated.Images}}{{println .}}{{end}}"
   update:
-    path: ./fluxcd/dev/applications/wordpress
+    path: ./apps/base/wordpress
     strategy: Setters
