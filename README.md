@@ -2,10 +2,10 @@
 
 This is for an assignment where we achieve the below:
 
-• Create a clean Kubernetes cluster (minikube).
-• Use FluxCD for GitOps and Helm for deploying WordPress.
-• Automate the process of image updates for WordPress using FluxCD's automated sync mechanism.
-• Write documentation to explain your setup and deployment process.
+- Create a clean Kubernetes cluster (minikube).
+- Use FluxCD for GitOps and Helm for deploying WordPress.
+- Automate the process of image updates for WordPress using FluxCD's automated sync mechanism.
+- Write documentation to explain your setup and deployment process.
 
 We will also harden the solution further and have multi environment support which the repository structure is based on.
 
@@ -155,7 +155,7 @@ spec:
 ```
 
 Note that with ` replicaCount: 5` we configure Flux to automatically upgrade
-the `HelmRelease` to deploy 5 replicas for this environment. We are also setting a 10GB database size with ` size: "5Gi`.
+the `HelmRelease` to deploy 5 replicas for this environment. We are also setting a 10GB database size with ` size: "10Gi`.
 
 
 ## Bootstrap dev and prod
@@ -238,7 +238,7 @@ NAMESPACE    	NAME         	REVISION	SUSPENDED	READY	MESSAGE
 default      	wordpress    	20.1.2   	False    	True 	Helm install succeeded for release default/wordpress.v1 with chart wordpress@20.1.2
 ```
 
-Verify that the demo wordpress app can be accessed via ingress:
+Verify that the demo wordpress app can be accessed:
 
 ```console
 $ kubectl get pods --namespace default
