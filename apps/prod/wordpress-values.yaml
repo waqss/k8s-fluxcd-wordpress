@@ -4,7 +4,7 @@ metadata:
   name: wordpress
 spec:
   values:
-    replicaCount: 3
+    replicaCount: 5
     mariadb:
       primary:
         persistence:
