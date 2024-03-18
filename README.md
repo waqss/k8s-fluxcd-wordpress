@@ -177,7 +177,7 @@ The clusters dir contains the Flux configuration:
     └── wordpress-imagerepo.yaml
 ```
 
-In **clusters/dev/** dir we have the Flux Kustomization definitions, for example:
+In **clusters/dev/** dir we have the Flux Kustomization definitions, for example the apps.yaml:
 
 ```yaml
 apiVersion: kustomize.toolkit.fluxcd.io/v1
@@ -197,6 +197,7 @@ spec:
 ```
 
 Note that with `path: ./apps/dev` we configure Flux to sync the dev environment Kustomize overlay.
+We also have 3 wordpress related image automation files which we will talk about later.
 
 Fork this repository on your personal GitHub account and export your GitHub access token, username and repo name:
 
@@ -265,3 +266,92 @@ You can Bootstrap Flux on prod by setting the context and path to your productio
 
 
 ## Image Automation
+For a detailed guide please visit - https://fluxcd.io/flux/guides/image-update/
+
+We have 3 image automation yaml files for each environment. Lets look at the ones for the dev environment.
+
+In **clusters/dev/** dir we have the wordpress-imagerepo.yaml:
+
+```yaml
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: wordpress-repo
+  namespace: flux-system
+spec:
+  image: docker.io/bitnami/wordpress
+  interval: 1h
+```
+
+This will tell Flux which container registry to scan for new image tags.
+
+Next in **clusters/dev/** dir we have the wordpress-imagepolicy.yaml:
+
+```yaml
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: wordpress-policy
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: wordpress-repo
+  policy:
+    semver:
+      range: ">=6.0.0"
+```
+
+Above we have a policy instructing Flux to apply the latest image tag and the minimum version has to always be 6.x.x
+
+Finally in **clusters/dev/** dir we have the wordpress-imageautomation.yaml:
+
+```yaml
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageUpdateAutomation
+metadata:
+  name: wordpress-auto
+  namespace: flux-system
+spec:
+  interval: 1h
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  git:
+    checkout:
+      ref:
+        branch: feat/implementation
+    commit:
+      author:
+        name: fluxcdbot
+        email: fluxcdbot@example.com
+      messageTemplate: "update WordPress image to {{range .Updated.Images}}{{println .}}{{end}}"
+  update:
+    path: ./apps/base/wordpress
+    strategy: Setters
+```
+
+The image automation yaml above will run all the policies at the specified interval. In our case it will check every hour for newer image versions and apply the change if necessary. It will also commit this change back to git within the ` apps/base/wordpress/release.yaml` file.
+
+Specifically on the tag line:
+
+```yaml
+  values:
+    image:
+      repository: bitnami/wordpress
+      tag: 6.4.3 # {"$imagepolicy": "flux-system:wordpress-policy:tag"}
+```
+
+For example if we had ` tag: 6.1.1` there initially, then the image automation would have automatically scanned the registry for new images, downloaded the latest one, committed the new tag version to the release.yaml file and then flux would have picked up this change and updated the image within the cluster putting us on the latest version as needed.
+
+## References
+https://www.docker.com/products/docker-desktop/
+https://minikube.sigs.k8s.io/docs/start/
+https://fluxcd.io/flux/installation/
+https://fluxcd.io/flux/installation/bootstrap/github/
+https://fluxcd.io/flux/guides/image-update/
+https://fluxcd.io/flux/guides/repository-structure/
+
+
+
+
+
