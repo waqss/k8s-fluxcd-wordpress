@@ -6,8 +6,6 @@ metadata:
 spec:
   imageRepositoryRef:
     name: wordpress-repo
-  # filterTags:
-  #   pattern: ""
   policy:
     semver:
       range: ">=6.0.0"
