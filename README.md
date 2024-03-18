@@ -217,7 +217,6 @@ Set the kubectl context to your dev cluster and bootstrap Flux:
 
 ```sh
   flux bootstrap github \
-    --context=dev \
     --owner=${GITHUB_USER} \
     --repository=${GITHUB_REPO} \
     --branch=main \
@@ -254,7 +253,6 @@ You can Bootstrap Flux on prod by setting the context and path to your productio
 
 ```sh
   flux bootstrap github \
-    --context=prod \
     --owner=${GITHUB_USER} \
     --repository=${GITHUB_REPO} \
     --branch=main \
