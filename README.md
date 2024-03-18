@@ -344,12 +344,12 @@ Specifically on the tag line:
 For example if we had ` tag: 6.1.1` there initially, then the image automation would have automatically scanned the registry for new images, downloaded the latest one, committed the new tag version to the release.yaml file and then flux would have picked up this change and updated the image within the cluster putting us on the latest version as needed.
 
 ## References
-https://www.docker.com/products/docker-desktop/
-https://minikube.sigs.k8s.io/docs/start/
-https://fluxcd.io/flux/installation/
-https://fluxcd.io/flux/installation/bootstrap/github/
-https://fluxcd.io/flux/guides/image-update/
-https://fluxcd.io/flux/guides/repository-structure/
+- https://www.docker.com/products/docker-desktop/
+- https://minikube.sigs.k8s.io/docs/start/
+- https://fluxcd.io/flux/installation/
+- https://fluxcd.io/flux/installation/bootstrap/github/
+- https://fluxcd.io/flux/guides/image-update/
+- https://fluxcd.io/flux/guides/repository-structure/
 
 
 
