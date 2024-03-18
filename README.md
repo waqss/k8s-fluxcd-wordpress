@@ -319,7 +319,7 @@ spec:
   git:
     checkout:
       ref:
-        branch: feat/implementation
+        branch: main
     commit:
       author:
         name: fluxcdbot
