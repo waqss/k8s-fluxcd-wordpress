@@ -1,0 +1,13 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: wordpress
+spec:
+  values:
+    replicaCount: 2
+    mariadb:
+      primary:
+        persistence:
+          size: "5Gi"
+    service:
+      type: ClusterIP
